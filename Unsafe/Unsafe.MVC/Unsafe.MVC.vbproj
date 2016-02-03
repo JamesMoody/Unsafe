@@ -133,7 +133,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UnsafeData\Unsafe.Data.vbproj">
+    <ProjectReference Include="..\Unsafe.Data\Unsafe.Data.vbproj">
       <Project>{336ac126-8e3a-48ab-9abc-061b3b6c5750}</Project>
       <Name>Unsafe.Data</Name>
     </ProjectReference>

@@ -57,6 +57,10 @@
 
     Public Const Decimal_TestValue As Decimal = 123.456
 
+    Public Const SafeBadGuySite_URL As String = "NeverGoToThisSite.net"
+    Public Const SafeBadGuySite_HTTP As String = "http://" + SafeBadGuySite_URL
+    Public Const SafeBadBuySite_HTTPEncoded As String = "http%3A%2F%2Fwww." + SafeBadGuySite_URL
+
     Public Const Comment_Statement As String = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     Public Const Comment_Sentences As String = "Pellentesque facilisis quis tellus in pharetra. Integer tristique pellentesque risus, at congue lorem egestas eget. Duis ipsum nunc, auctor non porttitor vel, iaculis ac lacus."
     Public Const Comment_Paragraph As String = "Suspendisse potenti. Duis quis sapien sit amet tellus fermentum mollis. Nullam massa orci, auctor ac congue id, tincidunt quis lacus. In sed lectus id lacus tincidunt feugiat. Curabitur sed est mi. Nullam a orci eget sapien condimentum semper ut sit amet dolor. Nunc vel odio pharetra, accumsan sem ut, pretium nisi. Phasellus urna tortor, luctus et hendrerit nec, maximus et sapien. Pellentesque pulvinar, dui vel vehicula dignissim, ligula felis pharetra ex, varius viverra purus nulla quis quam."
@@ -64,12 +68,9 @@
                                                  + vbCrLf + _
                                                  "Integer in interdum lorem, vitae facilisis elit. Vestibulum quis ipsum eu est rutrum placerat in a metus. Curabitur pretium tortor mauris, vitae finibus erat pellentesque in. In semper augue massa, sit amet elementum sem venenatis vel. Aliquam feugiat varius ex, id molestie nisl pulvinar et. Suspendisse eu molestie felis, at scelerisque est. Morbi tincidunt eu lacus at feugiat."
     Public Const Comment_AttackEmbededJS As String = "This is some text before the attack.< s c r i p t >alert('XSS');</ s c r i p t >This is text after the attack"
-    Public Const Comment_AttackEmbededIMG As String = "This is some text before the attack.<img src=http%3A%2F%2Fwww.NeverGoToThisSite.com%2FAttackCat.png />"
+    Public Const Comment_AttackEmbededIMG As String = "This is some text before the attack.<img src=http%3A%2F%2Fwww." + SafeBadGuySite_URL + "%2FAttackCat.png />"
 
 
-    Public Const SafeBadGuySite_URL As String = "NeverGoToThisSite.com" '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' consider getting
-    Public Const SafeBadGuySite_HTTP As String = "http://NeverGoToThisSite.com"
-    Public Const SafeBadBuySite_HTTPEncoded As String = "http%3A%2F%2Fwww.NeverGoToThisSite.com"
 
 
     '"<html><head></head><body><img src=\"\" onerror=\"XSS\" /></body></html>";
