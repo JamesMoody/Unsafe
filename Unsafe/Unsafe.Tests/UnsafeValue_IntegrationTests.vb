@@ -27,18 +27,10 @@ Imports Unsafe.Data
 
 #Region " UnsafeValue_DeepInheritanceException "
 
-    <TestMethod()> Public Sub UnsafeValue_DeepInheritanceException()
-        Try
-            Dim tstr As New UnsafeValue(TestValues.String_SingleWord)
-            Dim result As Boolean = tstr.validate(Of valSimpleTest2).isValid
+    <TestMethod()> Public Sub UnsafeValue_DeepInheritance()
+        Dim tstr As New UnsafeValue(TestValues.String_SingleWord)
 
-            ' we should never get here
-            Assert.Fail("Expected Exception: NotAnUnsafeValidatorException")
-
-        Catch ex As Exception
-            Assert.IsTrue(TypeOf ex Is NotAnUnsafeValidatorException)
-            Assert.AreEqual(TestValues.ExceptionMessage_NotAnUnsafeValidatorException, ex.Message)
-        End Try
+        Assert.IsTrue(tstr.validate(Of valSimpleTest2).isValid)
     End Sub
 
 #End Region
@@ -177,7 +169,7 @@ Public Class valSimpleTest
 End Class
 
 #End Region
-#Region " helpers classes - valSimpleTest2 (note: deep inheritance should fail) "
+#Region " helpers classes - valSimpleTest2 (note: deep inheritance should not fail) "
 
 Public Class valSimpleTest2
     Inherits valSimpleTest

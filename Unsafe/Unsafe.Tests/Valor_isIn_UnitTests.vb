@@ -121,23 +121,23 @@ Imports Unsafe.Data
 
 #End Region
 
-#Region " Valor_isIn_BadArrayParam_Missing "
+#Region " Valor_isIn_BadArrayParam_MissingArray "
 
-    <TestMethod()> Public Sub Valor_isIn_BadArrayParam_Missing()
+    <TestMethod()> Public Sub Valor_isIn_BadArrayParam_MissingArray()
         Assert.IsFalse(valor.isIn(10))
     End Sub
 
 #End Region
-#Region " Valor_isIn_BadArrayParam_Empty "
+#Region " Valor_isIn_BadArrayParam_EmptyArray "
 
-    <TestMethod()> Public Sub Valor_isIn_BadArrayParam_Empty()
+    <TestMethod()> Public Sub Valor_isIn_BadArrayParam_EmptyArray()
         Assert.IsFalse(valor.isIn(10, {}))
     End Sub
 
 #End Region
-#Region " Valor_isIn_BadArrayParam_Nothing "
+#Region " Valor_isIn_BadArrayParam_NothingArray "
 
-    <TestMethod()> Public Sub Valor_isIn_BadArrayParam_Nothing()
+    <TestMethod()> Public Sub Valor_isIn_BadArrayParam_NothingArray()
         Try
             Dim result As Boolean = valor.isIn(10, Nothing)
 
@@ -147,6 +147,13 @@ Imports Unsafe.Data
         Catch ex As Exception
             Assert.IsTrue(TypeOf ex Is ArgumentNullException)
         End Try
+    End Sub
+
+#End Region
+#Region " Valor_isIn_BadArrayParam_MissingTestValue "
+
+    <TestMethod()> Public Sub Valor_isIn_BadArrayParam_MissingTestValue()
+        Assert.IsFalse(valor.isIn(Nothing, {1, 2, 3}))
     End Sub
 
 #End Region
