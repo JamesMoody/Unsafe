@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Unsafe.MVC</id>
+    <version>0.9.1</version>
+    <title>Unsafe.MVC</title>
+    <authors>James Moody</authors>
+    <owners>James Moody</owners>
+    <licenseUrl>https://raw.githubusercontent.com/JamesMoody/Unsafe/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/JamesMoody/Unsafe</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This utility makes writing secure MVC websites easier by allowing action parameters to be passed as UnsafeValue objects.</description>
+    <copyright>Copyright 2016</copyright>
+    <tags>security sanitizer .net MVC</tags>
+  </metadata>
+</package>

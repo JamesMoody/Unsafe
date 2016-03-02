@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Unsafe.Data</id>
+    <version>0.9.0</version>
+    <title>Unsafe.Data</title>
+    <authors>James Moody</authors>
+    <owners>James Moody</owners>
+    <licenseUrl>https://raw.githubusercontent.com/JamesMoody/Unsafe/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/JamesMoody/Unsafe</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Unsafe.Data is a set of easy-to-extend sanitizer objects.</description>
+    <copyright>Copyright 2016</copyright>
+    <tags>security sanitizer .net </tags>
+  </metadata>
+</package>

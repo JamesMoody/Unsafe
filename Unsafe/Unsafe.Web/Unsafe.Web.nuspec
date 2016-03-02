@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Unsafe.Web</id>
+    <version>0.9.0</version>
+    <title>Unsafe.Web</title>
+    <authors>James Moody</authors>
+    <owners>James Moody</owners>
+    <licenseUrl>https://raw.githubusercontent.com/JamesMoody/Unsafe/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/JamesMoody/Unsafe</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This utility makes writing secure websites easier by wrapping the query string System.Web.HttpRequest's QueryString, Form, and Cookie properties with an easy-to-extend sanitizer.</description>
+    <copyright>Copyright 2016</copyright>
+    <tags>security sanitizer .net asp.net mvc</tags>
+  </metadata>
+</package>

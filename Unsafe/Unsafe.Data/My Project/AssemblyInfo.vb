@@ -8,11 +8,11 @@ Imports System.Reflection
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("UnsafeData")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("UnsafeData")> 
-<Assembly: AssemblyCopyright("Copyright ©  2015")> 
+<Assembly: AssemblyTitle("Unsafe.Data")>
+<Assembly: AssemblyDescription("Unsafe.Data is a set of easy-to-extend sanitizer objects.")>
+<Assembly: AssemblyCompany("James Moody")>
+<Assembly: AssemblyProduct("Unsafe.Data")>
+<Assembly: AssemblyCopyright("Copyright ©  2016")>
 <Assembly: AssemblyTrademark("")> 
 <Assembly: NeutralResourcesLanguage("en")>
 
@@ -27,5 +27,5 @@ Imports System.Reflection
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("0.9.0.0")>
+<Assembly: AssemblyFileVersion("0.9.0.0")>
