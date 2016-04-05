@@ -1,0 +1,175 @@
+﻿@{
+    ViewBag.Title = "In Action";
+}
+<div class="jumbotron">
+    <h1>In Action</h1>
+</div>
+
+
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">Simple Tests</div>
+        <div class="panel-body">
+
+            <div class="container">
+                <div class="input-group">
+
+                    <span id="lblSimpleTest_Value" class="input-group-addon">Test Value</span>
+
+                    <input id="txtSimpleTest_Value" type="text" class="form-control" placeholder="Enter A Value To Test" aria-describedby="lblSimpleTest_Value" value="1" >
+
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose A Test&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a id="lnkSimpleTest" href="#" data-testtype="1">Simple ID (akin to a database PK)</a></li>
+                            <li><a id="lnkSimpleTest" href="#" data-testtype="2">Positive Interger</a></li>
+                            <li><a id="lnkSimpleTest" href="#" data-testtype="3">Negative Integer</a></li>
+                            <li><a id="lnkSimpleTest" href="#" data-testtype="4">Simple Word</a></li>
+                            <li><a id="lnkSimpleTest" href="#" data-testtype="5">Simple Sentence</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container bumpDown">
+                <div class="input-group">
+                    <span id="lblSimpleTest_Result" class="input-group-addon">Result</span>
+                    <input id="txtSimpleTest_Result" type="text" class="form-control" placeholder="Click Run To Evaluate" aria-describedby="lblSimpleTest_Result" readonly="readonly" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">More Dangerous Input Tests (No .NET input Validation)</div>
+        <div class="panel-body">
+
+            <div class="container">
+                <div class="input-group">
+
+                    <span id="lblDangerousTest_Value" class="input-group-addon">Test Value</span>
+
+                    <input id="txtDangerousTest_Value" type="text" class="form-control" placeholder="Enter A Value To Test" aria-describedby="lblDangerousTest_Value" value="adsf <script>alert('xss')</script> asdf">
+
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose A Test&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a id="lnkDangerousTest" href="#" data-testtype="1">Simple ID (akin to a database PK)</a></li>
+                            <li><a id="lnkDangerousTest" href="#" data-testtype="2">Positive Interger</a></li>
+                            <li><a id="lnkDangerousTest" href="#" data-testtype="3">Negative Integer</a></li>
+                            <li><a id="lnkDangerousTest" href="#" data-testtype="4">Simple Word</a></li>
+                            <li><a id="lnkDangerousTest" href="#" data-testtype="5">Simple Sentence</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container bumpDown">
+                <div class="input-group">
+                    <span id="lblDangerousTest_Result" class="input-group-addon">Result</span>
+                    <input id="txtDangerousTest_Result" type="text" class="form-control" placeholder="Click Run To Evaluate" aria-describedby="lblDangerousTest_Result" readonly="readonly" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts {
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('a[id="lnkSimpleTest"]').click(function () {
+            var value     = $("#txtSimpleTest_Value").val();
+            var targetUrl = "/ajax/checkSomeID"; // default
+
+            switch ($(this).data("testtype")) {
+                case 1:
+                    targetUrl = "/ajax/checkSomeID"
+                    break;
+
+                case 2:
+                    targetUrl = "/ajax/checkPosInt"
+                    break;
+
+                case 3:
+                    targetUrl = "/ajax/checkNegInt"
+                    break;
+
+                case 4:
+                    targetUrl = "/ajax/checkSimpleWord"
+                    break;
+
+                case 5:
+                    targetUrl = "/ajax/checkSimpleSentence"
+                    break;
+            }
+        
+
+            $.post(targetUrl, { testValue: value })
+                .done(function (data) {
+                    $("#txtSimpleTest_Result").val(data.testResult);
+                })
+
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    $("#txtSimpleTest_Result").val("ERROR: " + errorThrown);
+                });
+
+        });
+
+
+
+
+
+
+        $('a[id="lnkDangerousTest"]').click(function () {
+            var value = $("#txtDangerousTest_Value").val();
+            var targetUrl = "/ajax/checkDangerousID"; // default
+
+            switch ($(this).data("testtype")) {
+                case 1:
+                    targetUrl = "/ajax/checkDangerousID"
+                    break;
+
+                case 2:
+                    targetUrl = "/ajax/checkDangerousPosInt"
+                    break;
+
+                case 3:
+                    targetUrl = "/ajax/checkDangerousNegInt"
+                    break;
+
+                case 4:
+                    targetUrl = "/ajax/checkDangerousWord"
+                    break;
+
+                case 5:
+                    targetUrl = "/ajax/checkDangerousSentence"
+                    break;
+            }
+
+
+            $.post(targetUrl, { testValue: value })
+                .done(function (data) {
+                    $("#txtDangerousTest_Result").val(data.testResult);
+                })
+
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    $("#txtDangerousTest_Result").val("ERROR: " + errorThrown);
+                });
+
+        });
+
+
+    });
+</script>
+
+}

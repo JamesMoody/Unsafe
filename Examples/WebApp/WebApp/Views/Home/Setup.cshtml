@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Setup";
+}
+
+<style type="text/css">
+pre.spacer { margin-bottom: 25px; }
+</style>
+
+<div class="jumbotron">
+    <h1>Setup</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>How to setup Unsafe.MVC</h2>
+        <ol>
+            <li>
+                Download the nuget package...
+                <pre class="spacer">PM> Install-Package Unsafe.MVC</pre>              
+            </li>
+            <li>
+                Modify Global.asax to include Unsafe.MVC's BinderProvider in Application_Start()...
+                <pre class="spacer">ModelBinderProviders.BinderProviders.Add(new Unsafe.MVC.UnsafeValueModelBinderProvider());</pre>
+            </li>
+            <li>
+                Add UnsafeValue to the action's parameter
+                <pre class="spacer">public ActionResult SomeActionName(UnsafeValue someParam)</pre>
+            </li>
+            <li>
+                Use the built in validators in Unsafe.Data.Common.Validators...
+                <pre>someParam.Validate&lt;valID&gt;().isValid;</pre>
+                <pre class="spacer">someParam.Validate&lt;valID&gt;().value;</pre>
+            </li>
+            <li>
+                ...or build your own!
+                <pre>
+public class valCustomChecker : UnsafeValidator<int>
+{
+&nbsp;&nbsp;&nbsp;&nbsp;public valCustomChecker(ref object value) : base(ref value)
+&nbsp;&nbsp;&nbsp;&nbsp;{ }
+&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;public override bool isValid
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}
+                </pre>
+                <pre>someParam.Validate&lt;valCustomChecker&gt;().isValid;</pre>
+                <pre class="spacer">someParam.Validate&lt;valCustomChecker&gt;().value;</pre>
+            </li>
+        </ol>
+    </div>
+</div>
